@@ -25,7 +25,7 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        //
+        return view('articles.create');
     }
 
     /**
@@ -36,7 +36,18 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // インスタンスの作成
+        $article = new Article;
+
+        // 値の用意
+        $article->title = $request->title;
+        $article->body = $request->body;
+
+        // インスタンスに値を設定して保存
+        $article->save();
+
+        // 登録したらindexに戻る
+        return redirect('/articles');
     }
 
     /**
@@ -47,7 +58,9 @@ class ArticleController extends Controller
      */
     public function show($id)
     {
-        //
+        //$idで検索したデータをビューに渡す
+        $article = Article::find($id);
+        return view('articles.show', ['article' => $article]);
     }
 
     /**
@@ -58,7 +71,7 @@ class ArticleController extends Controller
      */
     public function edit($id)
     {
-        //
+        $article = Article::find($id);
     }
 
     /**
