@@ -7,11 +7,10 @@
     <title>article show</title>
 </head>
 <body>
-    <a href="/articles">戻る</a>
     <h1>論文詳細</h1>
-    <p>タイトル:{{ $article->title }}</p>
+    <p>タイトル: {{ $article->title }}</p>
     <p>{{ $article->body }}</p>
-    <div class=“button-group”>
+    <div class="button">
         <button onclick=“location.href‘/articles’“>一覧へ戻る</button>
         <button onclick=“location.href=‘/articles/{{ $article->id }}/edit’“>編集する</button>
         <form action=“/articles/{{ $article->id }}” method=“post”>
